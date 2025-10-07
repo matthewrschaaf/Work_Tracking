@@ -78,6 +78,11 @@ server <- function(input, output, session) {
   temp_log <- read.csv(log_file, colClasses = log_col_types)
   temp_log$Description <- as.character(temp_log$Description)
   
+  inputs_to_reset <- c(
+    "RG", "RG_T", "LA", "LH", "LN_PF", "LN_BL", "OH", "OU",
+    "CD", "CN", "CE", "CT", "description"
+  )
+  
   rv <- reactiveValues(
     balances = read.csv(balances_file),
     last_accrual_date = as.Date(readLines(accrual_date_file)),
@@ -182,6 +187,7 @@ server <- function(input, output, session) {
       shinyjs::disable("save")
       save_entry()
       shinyjs::enable("save")
+      shinyjs::reset(inputs_to_reset)
     }
   })
   
@@ -190,6 +196,7 @@ server <- function(input, output, session) {
     shinyjs::disable("save")
     save_entry()
     shinyjs::enable("save")
+    shinyjs::reset(inputs_to_reset)
   })
 }
 
