@@ -1,4 +1,6 @@
 "Date","RG","RG_T","LA","CN","CT","CE","CD","OU","LH","OH","LN_PF","LN_BL","Total_Hours","Description"
 2025-10-07,7,0,0,0,0,0,0,0,0,0,1,0,8,"created this app and continued to work on central ""LRLwq"" package in R"
+2025-10-08,7,0,0,0,0,0,0,0,0,0,1,0,8,"Continued work on central 'LRLwq' package in R. Finished up LRLwq logger function. Started looking into building complex shiny app for pulls from DASLER Results table. Got flu shot. Attended ED safety meeting, as well as talking with Melanie, Kristin, and Zac about pulses"
+2025-10-09,8,0,0,0,0,0,0,0,0,0,0,0,8,"continued work on central 'LRLwq' package. Stopped making DASLER query tool as I think it is not necessary and too complicated to be worth it. Working on learning how to get Kristin and Zac access to LRLwq package"
 2025-10-13,0,0,0,0,0,0,0,0,8,0,0,0,8,"Columbus Day"
 2025-10-17,0,0,8,0,0,0,0,0,0,0,0,0,8,"In Miami"

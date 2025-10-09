@@ -187,7 +187,7 @@ server <- function(input, output, session) {
       shinyjs::disable("save")
       save_entry()
       shinyjs::enable("save")
-      shinyjs::reset(inputs_to_reset)
+      shinyjs::reset(id = inputs_to_reset)
     }
   })
   
@@ -196,7 +196,7 @@ server <- function(input, output, session) {
     shinyjs::disable("save")
     save_entry()
     shinyjs::enable("save")
-    shinyjs::reset(inputs_to_reset)
+    shinyjs::reset(id = inputs_to_reset)
   })
 }
 
