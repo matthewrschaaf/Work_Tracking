@@ -58,7 +58,6 @@ ui <- fluidPage(
 # --- SERVER  ---
 server <- function(input, output, session) {
   
-  # Check for required files on startup
   required_files <- c(log_file, balances_file, accrual_date_file)
   files_exist <- sapply(required_files, file.exists)
   
@@ -86,7 +85,7 @@ server <- function(input, output, session) {
   rv <- reactiveValues(
     balances = read.csv(balances_file),
     last_accrual_date = as.Date(readLines(accrual_date_file)),
-    log = temp_log 
+    log = temp_log
   )
   
   observe({
@@ -111,7 +110,6 @@ server <- function(input, output, session) {
     }
   })
   
-  
   output$balance_table <- renderTable({ rv$balances })
   output$pay_period_table <- renderTable({
     pay_period_dates <- get_current_pay_period(Sys.Date())
@@ -120,7 +118,6 @@ server <- function(input, output, session) {
       Status = ifelse(pay_period_dates %in% rv$log$Date, "✔️ Logged", "–")
     )
   })
-  
   
   save_entry <- function() {
     old_entry <- filter(rv$log, Date == input$date)
@@ -161,7 +158,7 @@ server <- function(input, output, session) {
     showNotification("Entry saved successfully!", type = "message")
   }
   
-  # Save button logic 
+  # Save button logic
   observeEvent(input$save, {
     total_hours <- sum(
       input$RG, input$RG_T, input$LA, input$CN, input$CT, input$CE, 
@@ -187,7 +184,9 @@ server <- function(input, output, session) {
       shinyjs::disable("save")
       save_entry()
       shinyjs::enable("save")
-      shinyjs::reset(id = inputs_to_reset)
+      for (id in inputs_to_reset) {
+        shinyjs::reset(id)
+      }
     }
   })
   
@@ -196,7 +195,9 @@ server <- function(input, output, session) {
     shinyjs::disable("save")
     save_entry()
     shinyjs::enable("save")
-    shinyjs::reset(id = inputs_to_reset)
+    for (id in inputs_to_reset) {
+      shinyjs::reset(id)
+    }
   })
 }
 
