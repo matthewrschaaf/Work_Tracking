@@ -4,3 +4,5 @@
 .httr-oauth
 .DS_Store
 .quarto
+leave_balances.csv
+time_log.csv
